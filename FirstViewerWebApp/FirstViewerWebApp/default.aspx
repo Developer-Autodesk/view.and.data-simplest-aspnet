@@ -7,7 +7,7 @@
     <title>Minimum ASP.NET Sample</title>
     <link type="text/css" rel="stylesheet" href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.css" />
 </head>
-<script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.min.js?v=1.2.23"></script>
+<script src="https://autodeskviewer.com/viewers/2.2/viewer3D.min.js"></script>
 <script>
     // This is the basic JavaScript sample code available at the documentation
     // It's optimized for 3D models

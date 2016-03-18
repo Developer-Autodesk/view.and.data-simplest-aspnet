@@ -76,7 +76,7 @@ namespace FirstViewerWebApp
     /// <returns>Bucket name created (with timestamp suffix)</returns>
     private static string CreateBucket(string bucketName, string policy = "transient")
     {
-      bucketName = Regex.Replace(bucketName, "[^0-9a-zA-Z]+", ""); // only letters and numbers
+      bucketName = Regex.Replace(bucketName, "[^0-9a-zA-Z]+", "").ToLower(); // only letters and numbers
       bucketName += DateTime.Now.ToString("yyyyMMddHHmmss"); // avoid duplicate bucket name
 
       RestClient restClient = new RestClient(Credentials.BASE_URL);
@@ -87,7 +87,7 @@ namespace FirstViewerWebApp
       req.AddHeader("Content-Type", "application/json");
       req.AddHeader("Authorization", string.Format("Bearer {0}", Token));
 
-      string body = string.Format("{\"bucketKey\":\"{0}\",\"policyKey\":\"{1}\"}", bucketName, policy);
+      string body = string.Format("{2}\"bucketKey\":\"{0}\",\"policyKey\":\"{1}\"{3}", bucketName, policy, "{", "}");
       req.AddParameter("application/json", body, ParameterType.RequestBody);
 
       IRestResponse resp = restClient.Execute(req);
